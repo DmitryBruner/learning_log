@@ -6,3 +6,5 @@ class Topic(models.Model):
     def __str__(self):
         """Возвращает строковое представление модели"""
         return self.text
+
+    #test
