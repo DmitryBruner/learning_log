@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib import admin
 from django.urls import path
-from learning_logs.views import index, topics
-
+from learning_logs import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='Home'),
-    path('topics/', topics, name='Topics'), #мой кусок
+    path('', views.index, name='Home'),
+    path('topics/', views.topics, name='Topics'),
+    path('topics/<str:topic_id>', views.topic, name='Topic'),
+    path('new_topic/>', views.new_topic, name='New_topic'),
 ]
