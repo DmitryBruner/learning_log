@@ -6,8 +6,9 @@
 <ul>
     {% for entry in entries %}
       <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
+          <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+          <p>{{ entry.text|linebreaks }}</p>
+          <p><a href="{% url 'Edit_entry' entry.id%}"> edit entry </a> </p>
       </li>
     {% empty %}
       <li>

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 def index(request):
     return render(request, 'learning_logs/index.html')
@@ -36,10 +36,7 @@ def new_topic(request):
 def new_entry(request, topic_id):
     """Определяет новую запись в тему"""
     topic = Topic.objects.get(id=topic_id)
-    if request.method != 'POST':
-        #Данные не отправлялись; создается пустая форма
-        form = EntryForm()
-    else:
+    if request.method == 'POST':
         #Отправлены данные POST; обратотать данные
         form = EntryForm(data=request.POST)
         if form.is_valid():
@@ -47,5 +44,25 @@ def new_entry(request, topic_id):
             new_entry.topic = topic
             new_entry.save()
             return HttpResponseRedirect(reverse('Topic', args=[topic_id]))
+    else:
+        # Данные не отправлялись; создается пустая форма
+        form = EntryForm()
+
     context = {'topic': topic, 'form': form}
     return render(request, 'learning_logs/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    """Редактировать существующую запись"""
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+    if request.method != 'POST':
+        #Исходный запрос; форма заполняется данными текущей записи
+        form = EntryForm(instance=entry)
+    else:
+        #Отправка данных POST; обработать данные
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('Topic', args=[topic_id]))
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'learning_logs/edit_entry.html', context)

@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib import admin
 from django.urls import path
-from learning_logs import views
+from learning_logs.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='Home'),
-    path('topics/', views.topics, name='Topics'),
-    path('topics/<str:topic_id>', views.topic, name='Topic'),
-    path('new_topic/>', views.new_topic, name='New_topic'),
-    path('new_entry/<int:topic_id>', views.new_entry, name='New_entry'),
+    path('', index, name='Home'),
+    path('topics/', topics, name='Topics'),
+    path('topics/<int:topic_id>/', topic, name='Topic'),
+    path('new_topic/', new_topic, name='New_topic'),
+    path('new_entry/<int:topic_id>/', new_entry, name='New_entry'),
+    path('edit_entry/<int:entry_id>/', edit_entry, name='Edit_entry'),
 ]
