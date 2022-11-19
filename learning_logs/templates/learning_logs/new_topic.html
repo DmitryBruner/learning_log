@@ -1,10 +1,10 @@
 {% extends "learning_logs/base.html" %}
 {% block contents %}
-<p>Add a new topic:</p>
+<p>Добавить новую тему:</p>
 <form action="{% url 'New_topic' %}" method="post">
   {% csrf_token %}
   {{ form.as_p}}
-  <button name="submit"> add topic </button>
+  <button name="submit"> Добавить тему </button>
 
 </form>
 

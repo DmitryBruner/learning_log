@@ -26,5 +26,6 @@ urlpatterns = [
     path('new_topic/', new_topic, name='New_topic'),
     path('new_entry/<int:topic_id>/', new_entry, name='New_entry'),
     path('edit_entry/<int:entry_id>/', edit_entry, name='Edit_entry'),
-    path('users/', include('users.urls', namespace='users')),
+    path('users/', include('users.urls')),
+
 ]

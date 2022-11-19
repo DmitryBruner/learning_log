@@ -2,13 +2,13 @@
 {% block contents %}
 {% if form.errors %}
 
-<p>Your username and password didn't match. Try again.</p>
+<p>Шаблон под регистрацию.</p>
 {% endif %}
 
 <form action="{% url 'Login' %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
 
-  <button name="submit"> log in </button>
+  <button name="submit"> Регистрация </button>
 </form>
 {% endblock contents %}

@@ -1,21 +1,21 @@
 {% extends "learning_logs/base.html" %}
 {% block contents %}
-<p>Topic: {{topic}}</p>
-<p>Entries:</p>
-<p><a href="{% url 'New_entry' topic.id%}"> add new entry </a> </p>
+<p>Тема: {{topic}}</p>
+<p>Записи:</p>
+<p><a href="{% url 'New_entry' topic.id%}"> Добавить новую запись </a> </p>
 <ul>
     {% for entry in entries %}
       <li>
           <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
           <p>{{ entry.text|linebreaks }}</p>
-          <p><a href="{% url 'Edit_entry' entry.id%}"> edit entry </a> </p>
+          <p><a href="{% url 'Edit_entry' entry.id%}"> Редактировать запись </a> </p>
       </li>
     {% empty %}
       <li>
-        There are no entries for this topic yet/
+        Записей по этой теме пока нет
       </li>
     {% endfor %}
 </ul>
-<a href="{% url 'New_topic' %}">Add a new topic</a>
+<a href="{% url 'New_topic' %}">Добавить новую запись</a>
 
 {% endblock contents %}
