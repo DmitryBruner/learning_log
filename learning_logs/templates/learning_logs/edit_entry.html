@@ -5,9 +5,10 @@
 
 <form action="{% url 'Edit_entry' entry.id %}" method="post">
   {% csrf_token %}
-  {{ form.as_p}}
+  {{ form.as_p }}
+
   <button name="submit"> save changes </button>
 
 </form>
-
+{{ topic.pk }}
 {% endblock contents %}

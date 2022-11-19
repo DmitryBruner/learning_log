@@ -1,4 +1,10 @@
 <p><a href="{% url 'Home' %}">Learning Log</a></p>
-<p><a href="{% url 'Topics' %}">Topics</a></p>
+<p><a href="{% url 'Topics' %}">Topics</a>
+{% if user.is_authenticated %}
+    Hello, {{ user.name }}!
+    {% else %}
+    <a href="{% url 'Login' %}">log in</a>
+    {% endif %}
+</p>
 {% block contents %}
 {% endblock contents %}

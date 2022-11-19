@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from learning_logs.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('new_topic/', new_topic, name='New_topic'),
     path('new_entry/<int:topic_id>/', new_entry, name='New_entry'),
     path('edit_entry/<int:entry_id>/', edit_entry, name='Edit_entry'),
+    path('users/', include('users.urls', namespace='users')),
 ]

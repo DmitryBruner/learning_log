@@ -55,6 +55,7 @@ def edit_entry(request, entry_id):
     """Редактировать существующую запись"""
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
+
     if request.method != 'POST':
         #Исходный запрос; форма заполняется данными текущей записи
         form = EntryForm(instance=entry)
@@ -63,6 +64,6 @@ def edit_entry(request, entry_id):
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('Topic', args=[topic_id]))
+        return HttpResponseRedirect(reverse('Topic', args=[topic.pk]))
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
