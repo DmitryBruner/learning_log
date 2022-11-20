@@ -1,4 +1,16 @@
 {% extends "learning_logs/base.html" %}
+{% block page_header %}
+
+<div class='jumbotron'>
+    <h1 class="display-3">Отслеживай свое обучение!</h1>
+    <p class="lead">Заведи свой собственный журнал обучения и веди список
+тем, которые ты изучаешь. Всякий раз, когда ты узнаешь что-то новое
+по теме, делай запись, обобщающую то, что ты узнал.</p>
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+ role="button">Регистрация &raquo;</a>
+    </div>
+{% endblock page_header %}
+
 {% block contents %}
-<p>Журнал обучения помогает вам отслеживать свои знания по любой теме, которую вы изучаете.</p>
+
 {% endblock contents %}
