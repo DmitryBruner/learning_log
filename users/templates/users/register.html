@@ -1,14 +1,12 @@
 {% extends "learning_logs/base.html" %}
 {% block contents %}
-{% if form.errors %}
 
-<p>Шаблон под регистрацию.</p>
-{% endif %}
-
-<form action="{% url 'Login' %}" method="post">
+<form method="post" action="{% url 'users:register' %}" >
   {% csrf_token %}
   {{ form.as_p }}
 
-  <button name="submit"> Регистрация </button>
+  <button name="submit"> Зарегистрироваться </button>
+  <input type="hidden" name="next"
+  value="{% url 'Home' %}"/>
 </form>
 {% endblock contents %}
